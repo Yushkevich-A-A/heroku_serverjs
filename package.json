@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Yushkevich-A-A/heroku_serverjs/issues"
   },
-  "homepage": "https://github.com/Yushkevich-A-A/heroku_serverjs#readme"
+  "homepage": "https://github.com/Yushkevich-A-A/heroku_serverjs#readme",
+  "dependencies": {
+    "forever": "^4.0.1"
+  }
 }
