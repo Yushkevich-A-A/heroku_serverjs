@@ -1,5 +1,6 @@
 const http = require('http');
 const Koa = require('koa');
+const koaBody = require('koa-body');
 const { Ticket } = require('./Ticket');
 const { TicketController } = require('./TicketController');
 const app = new Koa();
@@ -15,9 +16,6 @@ app.use( koaBody({
     urlencoded: true,
     multupart: true,
 }));
-
-
-const arr = [1, 1, 2, 3, 4, 5, 6, 7, 8];
 
 app.use(async ctx => {
     const { method, id = null} = ctx.request.query;
