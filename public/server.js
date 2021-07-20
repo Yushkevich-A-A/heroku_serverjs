@@ -11,29 +11,40 @@ const ticketScond = new Ticket('вторая заявка', 'очень полн
 controller.addTicket(ticketFirst);
 controller.addTicket(ticketScond);
 
+app.use(koaBody({
+    urlencoded:true,
+}));
+
+
 app.use(async ctx => {
-    const { method, id = null} = ctx.request.querystring;
-    console.log(ctx.request.querystring);
-    switch (method) {
-        case 'allTickets':
-            ctx.response.body = controller.allTickets();
-            ctx.response.status = 200;
-            return;
+    const { method, id = null} = ctx.request.query;
+    console.log(ctx.request.query);
 
-        case 'Ticket':
-            ctx.response.body = controller.getTicket(id);
-            ctx.response.status = 200;
-            return;
+    ctx.response.set({
+        'Access-Control-Allow-Origin': '*',
+    })
 
-        case 'createTicket':
-            ctx.response.body = controller.getTicket(id);
-            ctx.response.status = 200;
-            return;
-        // TODO: обработка остальных методов
-        default:
-            ctx.response.status = 404;
-            return;
-    }
+    ctx.response.body = 'Hello woo!';
+    // switch (method) {
+    //     case 'allTickets':
+    //         ctx.response.body = controller.allTickets();
+    //         ctx.response.status = 200;
+    //         return;
+
+    //     case 'Ticket':
+    //         ctx.response.body = controller.getTicket(id);
+    //         ctx.response.status = 200;
+    //         return;
+
+    //     case 'createTicket':
+    //         ctx.response.body = controller.getTicket(id);
+    //         ctx.response.status = 200;
+    //         return;
+    //     // TODO: обработка остальных методов
+    //     default:
+    //         ctx.response.status = 404;
+    //         return;
+    // }
 });
 
 const server = http.createServer(app.callback()).listen(7070);
