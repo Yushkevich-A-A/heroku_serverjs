@@ -11,9 +11,10 @@ const ticketScond = new Ticket('вторая заявка', 'очень полн
 controller.addTicket(ticketFirst);
 controller.addTicket(ticketScond);
 
-// app.use(koaBody({
-//     urlencoded:true,
-// }));
+app.use( koaBody({
+    urlencoded: true,
+    multupart: true,
+}));
 
 
 const arr = [1, 1, 2, 3, 4, 5, 6, 7, 8];
