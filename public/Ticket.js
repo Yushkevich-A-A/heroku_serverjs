@@ -1,4 +1,4 @@
-export default class Ticket {
+class Ticket {
   constructor(name, description, status = false) {
     this.ticket = {
       name: name,
@@ -7,4 +7,8 @@ export default class Ticket {
     }
     this.description = description;
   }
+}
+
+module.exports = {
+  Ticket,
 }

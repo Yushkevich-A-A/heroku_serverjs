@@ -1,4 +1,4 @@
-export default class TicketController {
+class TicketController {
     constructor() {
         this.count = 0
         this.allTickets = [];
@@ -29,8 +29,10 @@ export default class TicketController {
     }
 
     getAllTickets() {
-        return this.allTickets.map( item => {
-            item.ticket;
-        });
+        return this.allTickets.map( item => item.ticket);
     }
 }
+
+module.exports = {
+    TicketController,
+  }
