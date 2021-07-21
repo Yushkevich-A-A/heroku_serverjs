@@ -20,9 +20,9 @@ app.use( koaBody({
 app.use(async ctx => {
     const { method, id = null} = ctx.request.query;
 
-    // ctx.response.set({
-    //     'Access-Control-Allow-Origin': '*',
-    // })
+    ctx.response.set({
+        'Access-Control-Allow-Origin': '*',
+    })
 
     // switch (method) {
     //     case 'allTickets':
