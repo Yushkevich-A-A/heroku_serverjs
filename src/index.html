@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div data-widget="subscribe" >
+        <form class="subscribe-form" data-id="subscribe-form">
+            <input data-id="name" name="name"required>
+            <input data-id="phone" name="phone" required>
+            <button class="button">Записаться</button>
+        </form>
+    </div>
+    <script>
+        const form = document.querySelector('.subscribe-form');
+        const button = document.querySelector('.button');
+
+        form.addEventListener('click', event => {
+            event.preventDefault();
+        })
+
+        
+        button.addEventListener('click', event => {
+            const formdata = new FormData();
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', '');
+            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+
+            xhr.addEventListener('load', () => {
+                console.log('Запрос прошел успешно!');
+            })
+
+            xhr.addEventListener('error', () => {
+                console.log('Ошибка');
+            })
+
+            xhr.send();
+        })
+
+    </script>
+</body>
+</html>
