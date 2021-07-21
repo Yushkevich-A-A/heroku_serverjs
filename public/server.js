@@ -12,10 +12,10 @@ const ticketScond = new Ticket('вторая заявка', 'очень полн
 controller.addTicket(ticketFirst);
 controller.addTicket(ticketScond);
 
-app.use( koaBody({
-    urlencoded: true,
-    multupart: true,
-}));
+// app.use( koaBody({
+//     urlencoded: true,
+//     multupart: true,
+// }));
 
 app.use(async ctx => {
     const { method, id = null} = ctx.request.query;
