@@ -12,8 +12,6 @@ const ticketScond = new Ticket('вторая заявка', 'очень полн
 controller.addTicket(ticketFirst);
 controller.addTicket(ticketScond);
 
-const server = http.createServer(app.callback()).listen(7070);
-
 // app.use( koaBody({
 //     urlencoded: true,
 //     multupart: true,
@@ -66,3 +64,5 @@ app.use(async ctx => {
 //     }
 //     console.log(`Server processed on ${port}`);
 // })
+
+const server = http.createServer(app.callback()).listen(7070);
