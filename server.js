@@ -26,28 +26,28 @@ app.use(async ctx => {
         'Access-Control-Allow-Origin': '*',
     });
 
-    // switch (method) {
-    //     case 'allTickets':
-    //         const arr = controller.getAllTickets();
+    switch (method) {
+        case 'allTickets':
+            const arr = controller.getAllTickets();
 
-    //         ctx.response.body = arr;
-    //         ctx.response.status = 200;
-    //         return;
+            ctx.response.body = arr;
+            ctx.response.status = 200;
+            return;
 
-    //     case 'Ticket':
-    //         ctx.response.body = controller.getTicket(id);
-    //         ctx.response.status = 200;
-    //         return;
+        case 'Ticket':
+            ctx.response.body = controller.getTicket(id);
+            ctx.response.status = 200;
+            return;
 
-    //     case 'createTicket':
-    //         ctx.response.body = controller.getTicket(id);
-    //         ctx.response.status = 200;
-    //         return;
-    // //     // TODO: обработка остальных методов
-    //     default:
-    //         ctx.response.status = 404;
-    //         return;
-    // }
+        case 'createTicket':
+            ctx.response.body = controller.getTicket(id);
+            ctx.response.status = 200;
+            return;
+    //     // TODO: обработка остальных методов
+        default:
+            ctx.response.status = 404;
+            return;
+    }
 
     ctx.response.body = 'ответ получен сервер локальный';
 });
