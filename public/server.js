@@ -12,6 +12,8 @@ const ticketScond = new Ticket('вторая заявка', 'очень полн
 controller.addTicket(ticketFirst);
 controller.addTicket(ticketScond);
 
+const server = http.createServer(app.callback()).listen(7070);
+
 app.use( koaBody({
     urlencoded: true,
     multupart: true,
@@ -50,7 +52,6 @@ app.use(async ctx => {
     ctx.response.body = 'ответ получен';
 });
 
-const server = http.createServer(app.callback()).listen(7070);
 
 // const server = http.createServer((req, res) => {
 //     console.log(req);
