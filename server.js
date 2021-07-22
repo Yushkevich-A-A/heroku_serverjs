@@ -17,6 +17,8 @@ app.use( koaBody({
     multupart: true,
 }));
 
+const port = process.env.PORT || 7070;
+
 app.use(async ctx => {
     const { method, id = null} = ctx.request.query;
 
@@ -65,4 +67,4 @@ app.use(async ctx => {
 //     console.log(`Server processed on ${port}`);
 // })
 
-const server = http.createServer(app.callback()).listen(7070);
+const server = http.createServer(app.callback()).listen(port);
