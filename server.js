@@ -1,6 +1,6 @@
 const http = require('http');
 const Koa = require('koa');
-// const koaBody = require('koa-body');
+const koaBody = require('koa-body');
 const { Ticket } = require('./Ticket');
 const { TicketController } = require('./TicketController');
 const app = new Koa();
@@ -12,17 +12,17 @@ const ticketScond = new Ticket('вторая заявка', 'очень полн
 controller.addTicket(ticketFirst);
 controller.addTicket(ticketScond);
 
-// app.use( koaBody({
-//     urlencoded: true,
-//     multupart: true,
-// }));
+app.use( koaBody({
+    urlencoded: true,
+    multupart: true,
+}));
 
 app.use(async ctx => {
     const { method, id = null} = ctx.request.query;
 
     ctx.response.set({
         'Access-Control-Allow-Origin': '*',
-    })
+    });
 
     // switch (method) {
     //     case 'allTickets':
@@ -47,7 +47,7 @@ app.use(async ctx => {
     //         return;
     // }
 
-    ctx.response.body = 'ответ получен';
+    ctx.response.body = 'ответ получен сервер локальный';
 });
 
 
