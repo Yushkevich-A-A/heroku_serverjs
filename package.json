@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "forever public/server.js",
-    "watch": "forever -w public/server.js"
+    "start": "forever server.js",
+    "watch": "forever -w server.js"
   },
   "repository": {
     "type": "git",
