@@ -50,7 +50,7 @@ app.use(async ctx => {
     ctx.response.body = 'ответ получен';
 });
 
-// const server = http.createServer(app.callback()).listen(7070);
+const server = http.createServer(app.callback()).listen(7070);
 
 // const server = http.createServer((req, res) => {
 //     console.log(req);
