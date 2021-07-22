@@ -1,6 +1,6 @@
 const http = require('http');
 const Koa = require('koa');
-const koaBody = require('koa-body');
+// const koaBody = require('koa-body');
 const { Ticket } = require('./Ticket');
 const { TicketController } = require('./TicketController');
 const app = new Koa();
@@ -14,10 +14,10 @@ controller.addTicket(ticketScond);
 
 const server = http.createServer(app.callback()).listen(7070);
 
-app.use( koaBody({
-    urlencoded: true,
-    multupart: true,
-}));
+// app.use( koaBody({
+//     urlencoded: true,
+//     multupart: true,
+// }));
 
 app.use(async ctx => {
     const { method, id = null} = ctx.request.query;
