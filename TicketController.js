@@ -14,11 +14,11 @@ class TicketController {
     }
 
     getTicket(id) {
-        // const index = this.allTickets.findIndex( item => item.ticket.id === id);
-        // if (index !== -1) {
-        //     return id;
-        // }
-        return id;
+        const index = this.allTickets.findIndex( item => item.id === id);
+        if (index !== -1) {
+            return this.desriptions[index];
+        }
+        return index;
     }
 
     deleteTicket(id) {
