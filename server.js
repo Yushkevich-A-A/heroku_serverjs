@@ -52,7 +52,7 @@ app.use(async ctx => {
             return;
 
         case 'ticket':
-            const data = 33;
+            const data = controller.getTicket(id);
             ctx.response.body = data;
             ctx.response.status = 200;
             return;
