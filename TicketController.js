@@ -10,6 +10,7 @@ class TicketController {
         this.allTickets.push(data.ticket);
         this.desriptions.push(data.description);
         this.count++;
+        return true;
     }
 
     getTicket(id) {

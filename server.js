@@ -52,14 +52,16 @@ app.use(async ctx => {
             return;
 
         case 'Ticket':
-            ctx.response.body = 33;
+            const data = controller.getTicket(id)
+            ctx.response.body = data;
             ctx.response.status = 200;
             return;
 
-        case 'createTicket':
-            ctx.response.body = controller.getTicket(id);
-            ctx.response.status = 200;
-            return;
+        // case 'createTicket':
+        //     const data = controller.addTicket(id)
+        //     ctx.response.body = controller.getTicket(id);
+        //     ctx.response.status = 200;
+        //     return;
     //     // TODO: обработка остальных методов
         default:
             ctx.response.status = 404;
