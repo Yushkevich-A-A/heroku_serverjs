@@ -7,14 +7,15 @@ class TicketController {
 
     addTicket(data) {
         data.ticket.id = this.count;
-        this.allTickets.push(data);
+        this.allTickets.push(data.ticket);
+        this.desriptions.push(data.description);
         this.count++;
     }
 
     getTicket(id) {
         const index = this.allTickets.findIndex( item => item.ticket.id === id);
         if (index !== -1) {
-            return this.allTickets[index].description;
+            return this.desriptions[index];
         }
         return false;
     }
@@ -29,7 +30,7 @@ class TicketController {
     }
 
     getAllTickets() {
-        return this.allTickets.map( item => item.ticket);
+        return this.allTickets;
     }
 }
 
