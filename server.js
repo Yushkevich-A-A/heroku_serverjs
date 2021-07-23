@@ -37,7 +37,7 @@ app.use( koaBody({
 const port = process.env.PORT || 7070;
 
 app.use(async ctx => {
-    const { method, id = null} = ctx.request.query;
+    const { method, id } = ctx.request.query;
 
     ctx.response.set({
         'Access-Control-Allow-Origin': '*',
@@ -52,7 +52,8 @@ app.use(async ctx => {
             return;
 
         case 'Ticket':
-            ctx.response.body = controller.getTicket(id);
+
+            ctx.response.body = controller.getTicket(+id);
             ctx.response.status = 200;
             return;
 
