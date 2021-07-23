@@ -10,7 +10,7 @@ const ticketFirst = new Ticket(
     'поменять краску в принтере. пом 404',
     ['полное описание первой заявки']
     );
-const ticketScond = new Ticket(
+const ticketSecond = new Ticket(
     'Переустановить Windows, ПК-Hall24',
     ['очень полное описание второй заявки']
     );
@@ -26,7 +26,8 @@ const ticketThird = new Ticket(
     );
 
 controller.addTicket(ticketFirst);
-controller.addTicket(ticketScond);
+controller.addTicket(ticketSecond);
+controller.addTicket(ticketThird);
 
 app.use( koaBody({
     urlencoded: true,
@@ -41,6 +42,9 @@ app.use(async ctx => {
     ctx.response.set({
         'Access-Control-Allow-Origin': '*',
     });
+
+    console.log(method);
+    
 
     switch (method) {
         case 'allTickets':
@@ -64,8 +68,6 @@ app.use(async ctx => {
             ctx.response.status = 404;
             return;
     }
-
-    ctx.response.body = 'ответ получен сервер локальный';
 });
 
 
