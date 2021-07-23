@@ -51,6 +51,7 @@ app.use(async ctx => {
             return;
 
         case 'ticket':
+            console.log(id)
             const data = controller.getTicket(id);
             ctx.response.body = data;
             ctx.response.status = 200;
