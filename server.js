@@ -43,9 +43,6 @@ app.use(async ctx => {
         'Access-Control-Allow-Origin': '*',
     });
 
-    console.log(method);
-    
-
     switch (method) {
         case 'allTickets':
             const arr = controller.getAllTickets();

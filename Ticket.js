@@ -1,5 +1,5 @@
 class Ticket {
-  constructor(name, description, status = false) {
+  constructor(name, description = 'описание отсутствует', status = false) {
     this.ticket = {
       name: name,
       status: status,
