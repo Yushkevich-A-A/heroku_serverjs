@@ -6,8 +6,24 @@ const { TicketController } = require('./TicketController');
 const app = new Koa();
 
 const controller = new TicketController();
-const ticketFirst = new Ticket('первая заявка', 'полное описание первой заявки', true);
-const ticketScond = new Ticket('вторая заявка', 'очень полное описание второй заявки')
+const ticketFirst = new Ticket(
+    'поменять краску в принтере. пом 404',
+    ['полное описание первой заявки']
+    );
+const ticketScond = new Ticket(
+    'Переустановить Windows, ПК-Hall24',
+    ['очень полное описание второй заявки']
+    );
+
+const ticketThird = new Ticket(
+    'Установить обновление KB-XXXX',
+    [
+        'Вышло критическое обновление для Windows, нужно поставить обновления в следующем приоритете',
+        '1. Сервера (не забыть сделать бэкап)',
+        '2. Рабочте станции',
+    ],
+    true
+    );
 
 controller.addTicket(ticketFirst);
 controller.addTicket(ticketScond);
