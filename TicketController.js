@@ -16,9 +16,9 @@ class TicketController {
     getTicket(id) {
         const index = this.allTickets.findIndex( item => item.ticket.id === id);
         if (index !== -1) {
-            return this.desriptions[index];
+            return id;
         }
-        return false;
+        return id;
     }
 
     deleteTicket(id) {
