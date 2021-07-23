@@ -44,12 +44,6 @@ app.use(async ctx => {
     });
 
     switch (method) {
-        case 'ticketFullDesc':
-            console.log(id);
-            ctx.response.body = controller.getTicket(id);
-            ctx.response.status = 200;
-            return;
-
         case 'allTickets':
             const arr = controller.getAllTickets();
 
@@ -57,9 +51,8 @@ app.use(async ctx => {
             ctx.response.status = 200;
             return;
 
-        case 'ticketFullDesc':
-            console.log(id);
-            ctx.response.body = controller.getTicket(id);
+        case 'Ticket':
+            ctx.response.body = 33;
             ctx.response.status = 200;
             return;
 
