@@ -51,7 +51,7 @@ app.use(async ctx => {
             ctx.response.status = 200;
             return;
 
-        case 'Ticket':
+        case 'ticket':
             const data = controller.getTicket(id)
             ctx.response.body = data;
             ctx.response.status = 200;
@@ -68,20 +68,5 @@ app.use(async ctx => {
             return;
     }
 });
-
-
-// const server = http.createServer((req, res) => {
-//     console.log(req);
-//     req.end('сервер запущен');
-// })
-// const port = 7070;
-
-// server.listen(port, (err) => {
-//     if (err) {
-//         console.log('Произошла ошибка', err);
-//         return;
-//     }
-//     console.log(`Server processed on ${port}`);
-// })
 
 const server = http.createServer(app.callback()).listen(port);
