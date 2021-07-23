@@ -51,9 +51,9 @@ app.use(async ctx => {
             ctx.response.status = 200;
             return;
 
-        case 'Ticket':
-
-            ctx.response.body = controller.getTicket(+id);
+        case 'ticket':
+            console.log(id);
+            ctx.response.body = controller.getTicket(id);
             ctx.response.status = 200;
             return;
 
