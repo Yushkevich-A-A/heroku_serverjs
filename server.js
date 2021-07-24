@@ -8,20 +8,16 @@ const app = new Koa();
 const controller = new TicketController();
 const ticketFirst = new Ticket(
     'поменять краску в принтере. пом 404',
-    ['полное описание первой заявки']
+    'полное описание первой заявки'
     );
 const ticketSecond = new Ticket(
     'Переустановить Windows, ПК-Hall24',
-    ['очень полное описание второй заявки']
+    'очень полное описание второй заявки'
     );
 
 const ticketThird = new Ticket(
     'Установить обновление KB-XXXX',
-    [
-        'Вышло критическое обновление для Windows, нужно поставить обновления в следующем приоритете',
-        '1. Сервера (не забыть сделать бэкап)',
-        '2. Рабочте станции',
-    ],
+    'Вышло критическое обновление для Windows, нужно поставить обновления в следующем приоритете\r\n1. Сервера (не забыть сделать бэкап)\r\n2. Рабочие станции',
     true
     );
 
@@ -31,13 +27,21 @@ controller.addTicket(ticketThird);
 
 app.use( koaBody({
     urlencoded: true,
-    multupart: true,
+    multipart: true,
 }));
 
 const port = process.env.PORT || 7070;
 
 app.use(async ctx => {
-    const { method, id } = ctx.request.query;
+
+    let data = null;
+    if (ctx.method === 'GET') {
+        data = ctx.request.query;
+    } else if (ctx.method === 'POST') {
+        data = ctx.request.body;
+    }
+    const { method, id, brief, full } = data;
+
     ctx.response.set({
         'Access-Control-Allow-Origin': '*',
     });
@@ -50,17 +54,28 @@ app.use(async ctx => {
             ctx.response.status = 200;
             return;
 
-        case 'ticket':
-            const data = controller.getTicket(parseInt(id));
-            ctx.response.body = data;
+        case 'getFullDescTicket':
+            ctx.response.body = controller.getTicket(parseInt(id));
             ctx.response.status = 200;
             return;
 
-        // case 'createTicket':
-        //     const data = controller.addTicket(id)
-        //     ctx.response.body = controller.getTicket(id);
-        //     ctx.response.status = 200;
-        //     return;
+        case 'createTicket':
+            ctx.response.body = controller.addTicket(new Ticket(brief, full));
+            ctx.response.status = 200;
+            return;
+
+        case 'editTicket':
+            ctx.response.body = controller.editTicket(parseInt(id), brief, full);
+            ctx.response.status = 200;
+            return;
+
+            
+        case 'deleteTicket':
+            ctx.response.body = controller.deleteTicket(parseInt(id));
+            ctx.response.status = 200;
+            return;
+
+
     //     // TODO: обработка остальных методов
         default:
             ctx.response.status = 404;

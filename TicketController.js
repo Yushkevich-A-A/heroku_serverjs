@@ -5,12 +5,8 @@ class TicketController {
         this.desriptions = [];
     }
 
-    addTicket(data) {
-        data.ticket.id = this.count;
-        this.allTickets.push(data.ticket);
-        this.desriptions.push(data.description);
-        this.count++;
-        return true;
+    getAllTickets() {
+        return this.allTickets;
     }
 
     getTicket(id) {
@@ -21,17 +17,38 @@ class TicketController {
         return false;
     }
 
-    deleteTicket(id) {
-        const index = this.allTickets.findIndex( item => item.ticket.id === id);
+    addTicket(data) {
+        data.ticket.id = this.count;
+        this.allTickets.push(data.ticket);
+        this.desriptions.push(this.getArrayFromText(data.description));
+        this.count++;
+        return true;
+    }
+
+    editTicket(id, brief, full) {
+        const index = this.allTickets.findIndex( item => item.id === id);
         if (index !== -1) {
-            this.allTickets.splice(index, 1);
+            this.allTickets[index].name = brief;
+            this.desriptions[index] = this.getArrayFromText(full);
             return true;
         }
         return false;
     }
 
-    getAllTickets() {
-        return this.allTickets;
+    deleteTicket(id) {
+        console.log(id);
+        const index = this.allTickets.findIndex( item => item.id === id);
+        if (index !== -1) {
+            this.allTickets.splice(index, 1);
+            this.desriptions.splice(index, 1);
+            return true;
+        }
+        return false;
+    }
+
+    
+    getArrayFromText(data) {
+        return data.split('\r\n');
     }
 }
 
